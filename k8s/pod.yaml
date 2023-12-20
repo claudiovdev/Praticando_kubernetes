@@ -1,0 +1,11 @@
+apiVersion: v1                                            #Aqui fica a versão do meu pod
+kind: Pod                                                 #Aqui nós colocamos o tipo do objeto que eu estou criando no momento
+metadata:
+  name: "javaServer"                                      #Aqui no metadata / name nós iremos definir o nome do nosso objeto
+  labels:
+    app: "javaServer"                                     # Aqui nós iremos definir uma etiqueta que ira facilitar na nossa busca casa queiramos encontrar um pod especifico ou um grupo de pods que tenham esta marcação
+spec:
+  containers:                                             #Aqui nós vamos criar o container, mas não precisa ser só um, pode ser um grupo mas por boa pratica é 1 container para cada pod
+    - name: javaServer                                    #Aqui eu vou definir o nome do meu container
+      image: "viniciuscfn/praticando_kubernete:latest"    # Aqui eu vou definir o nome da minha imagem que está lá no docker hub
+
