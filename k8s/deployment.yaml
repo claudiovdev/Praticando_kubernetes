@@ -8,13 +8,13 @@ spec:
   selector:
     matchLabels:
       app: javaserver
-    replicas: 3
-    template:
-      metadata:
-        name: "javaserver"
-        labels:
-          app: "javaserver"
-      spec:
-        containers:
-          - name: javaserver
-            image: "viniciuscfn/praticando_kubernete:latest"
+  replicas: 3
+  template:
+    metadata:
+      name: "javaserver"
+      labels:
+        app: "javaserver"
+    spec:
+      containers:
+        - name: javaserver
+          image: "viniciuscfn/praticando_kubernete:latest"
