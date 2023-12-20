@@ -45,6 +45,7 @@ jobs:
         context: .
         file: ./Dockerfile
         push: false
+        tags: viniciuscfn/praticando_kubernete:latest
       
       
 
