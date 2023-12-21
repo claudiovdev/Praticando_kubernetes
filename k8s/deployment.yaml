@@ -18,5 +18,4 @@ spec:
       containers:
         - name: javaserver
           image: "viniciuscfn/praticando_kubernete:latest"
-          ports:
-          - containerPort: 80
+          
