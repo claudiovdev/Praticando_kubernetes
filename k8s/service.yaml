@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service
+spec:
+  selector:
+    app: javaserver                                    #Aqui no app eu defino qual o nome dos pods que o meu server vai gerencia
+  type: ClusterIP
+  ports:
+  - name: service-port
+    port: 80
+    targetPort: 8080                                  # O targetPort representa a prota do meu container
+    protocol: TCP
