@@ -22,7 +22,7 @@ spec:
             - configMapRef:
                 name: javaserver-env
           volumeMounts:
-            - mountPath: "/app/config"
+            - mountPath: "/"
               name: config
       volumes:
         - name: config
