@@ -46,7 +46,7 @@ public class KuberController {
             e.printStackTrace();
             return ResponseEntity.status(500).body("Erro ao ler o arquivo.");
         }
-    }
+
     }
 
 
