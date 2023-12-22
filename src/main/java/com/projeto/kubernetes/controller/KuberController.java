@@ -9,8 +9,10 @@ import java.net.UnknownHostException;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.Scanner;
 
 @RestController
 @RequestMapping("kubernet")
@@ -33,22 +35,18 @@ public class KuberController {
     @GetMapping("/ler")
     public ResponseEntity<String> lerArquivo() {
         try {
+            Resource resource = new ClassPathResource("arquivo/mensagem.txt");
+            InputStream inputStream = resource.getInputStream();
+            Scanner scanner = new Scanner(inputStream, StandardCharsets.UTF_8).useDelimiter("\\A");
 
-            String caminhoArquivo = "app/src/main/resources/arquivo/mensagem.txt";
+            String conteudo = scanner.hasNext() ? scanner.next() : "";
 
-            // Carrega o arquivo da pasta resources
-            Resource resource = new ClassPathResource(caminhoArquivo);
-            Path path = Path.of(resource.getURI());
-
-            // Lê o conteúdo do arquivo
-            String conteudo = Files.readString(path);
-
-            // Retorna o conteúdo como resposta
             return ResponseEntity.ok(conteudo);
         } catch (IOException e) {
             e.printStackTrace();
             return ResponseEntity.status(500).body("Erro ao ler o arquivo.");
         }
+    }
     }
 
 
