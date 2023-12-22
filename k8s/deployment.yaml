@@ -18,16 +18,19 @@ spec:
       containers:
         - name: javaserver
           image: "viniciuscfn/praticando_kubernete:latest"
-          env:
-            - name: USERNAME
-              valueFrom:
-                configMapKeyRef:
-                  name: javaserver-env
-                  key: USERNAME
-
-            - name: PASSWORD
-              valueFrom:
-                configMapKeyRef:
-                  name: javaserver-env
-                  key: PASSWORD
+          envFrom:
+            - configMapRef:
+                name: javaserver-env
+          #env:
+          #  - name: USERNAME
+          #    valueFrom:
+          #      configMapKeyRef:
+          #        name: javaserver-env
+          #        key: USERNAME
+          #
+          #  - name: PASSWORD
+          #    valueFrom:
+          #      configMapKeyRef:
+          #        name: javaserver-env
+          #        key: PASSWORD
           
