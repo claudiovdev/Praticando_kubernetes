@@ -34,7 +34,7 @@ public class KuberController {
     public ResponseEntity<String> lerArquivo() {
         try {
 
-            String caminhoArquivo = "arquivo/mensagem.txt";
+            String caminhoArquivo = "/arquivo/mensagem.txt";
 
             // Carrega o arquivo da pasta resources
             Resource resource = new ClassPathResource(caminhoArquivo);
