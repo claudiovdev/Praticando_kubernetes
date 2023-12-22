@@ -21,6 +21,16 @@ spec:
           envFrom:
             - configMapRef:
                 name: javaserver-env
+          volumeMounts:
+            - mountPath: "src/main/resources/arquivo"
+              name: config
+      volumes:
+        - name: config
+          configMap:
+            name: configmap-arquivos
+            items:
+              - key: mensagem
+                path: "mensagem.txt"
           #env:
           #  - name: USERNAME
           #    valueFrom:
