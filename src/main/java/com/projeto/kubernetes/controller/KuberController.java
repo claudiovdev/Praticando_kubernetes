@@ -41,28 +41,22 @@ public class KuberController {
         String caminhoDoArquivo = "/src/main/resources/arquivo/mensagem.txt";
 
         try {
-            // Crie um objeto File com o caminho do arquivo
             File arquivo = new File(caminhoDoArquivo);
 
-            // Use FileReader para ler caracteres do arquivo
             FileReader leitorArquivo = new FileReader(arquivo);
 
-            // Ou use BufferedReader para leitura eficiente de linhas
             BufferedReader leitorBuffer = new BufferedReader(leitorArquivo);
 
             StringBuilder conteudo = new StringBuilder();
             String linha;
 
-            // Leia e acumule cada linha do arquivo
             while ((linha = leitorBuffer.readLine()) != null) {
                 conteudo.append(linha).append("\n");
             }
 
-            // Feche os recursos após a leitura
             leitorBuffer.close();
             leitorArquivo.close();
 
-            // Retorna o conteúdo como resposta
             return ResponseEntity.ok(conteudo.toString());
 
         } catch (IOException e) {
