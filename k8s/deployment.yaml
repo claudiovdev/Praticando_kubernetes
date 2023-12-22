@@ -23,6 +23,7 @@ spec:
                 name: javaserver-env
           volumeMounts:
             - mountPath: "src/main/resources/arquivo/"
+              nome: config
       volumes:
         - name: config
           configMap:
