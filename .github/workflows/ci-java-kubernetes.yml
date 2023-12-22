@@ -18,7 +18,10 @@ on:
 jobs:
   check-application:
     runs-on: 'ubuntu-latest'
-
+    env:
+      USERNAME: ${{ secrets.USERNAME }}
+      PASSWORD: ${{ secrets.PASSWORD }}
+      
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 17 and Environment Variables
