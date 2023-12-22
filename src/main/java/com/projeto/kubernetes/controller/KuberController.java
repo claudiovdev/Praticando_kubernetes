@@ -1,5 +1,6 @@
 package com.projeto.kubernetes.controller;
 
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,12 @@ import java.util.Scanner;
 @RequestMapping("kubernet")
 public class KuberController {
 
+    private final ResourceLoader resourceLoader;
+
+    public KuberController(ResourceLoader resourceLoader) {
+        this.resourceLoader = resourceLoader;
+    }
+
     @GetMapping("/meu-ip")
     public String retornandoIp() {
         try {
@@ -35,18 +42,20 @@ public class KuberController {
     @GetMapping("/ler")
     public ResponseEntity<String> lerArquivo() {
         try {
-            Resource resource = new ClassPathResource("arquivo/mensagem.txt");
+            // Carrega o arquivo usando o ResourceLoader
+            Resource resource = resourceLoader.getResource("classpath:arquivo/mensagem.txt");
             InputStream inputStream = resource.getInputStream();
             Scanner scanner = new Scanner(inputStream, StandardCharsets.UTF_8).useDelimiter("\\A");
 
+            // Lê o conteúdo do arquivo
             String conteudo = scanner.hasNext() ? scanner.next() : "";
 
+            // Retorna o conteúdo como resposta
             return ResponseEntity.ok(conteudo);
         } catch (IOException e) {
             e.printStackTrace();
             return ResponseEntity.status(500).body("Erro ao ler o arquivo.");
         }
-
     }
 
 
