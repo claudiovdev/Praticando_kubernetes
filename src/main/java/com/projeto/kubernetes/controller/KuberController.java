@@ -38,7 +38,7 @@ public class KuberController {
 
     @GetMapping("/ler")
     public ResponseEntity<String> lerArquivo() {
-        String caminhoDoArquivo = "/home/app/src/main/resources/arquivo/mensagem.txt";
+        String caminhoDoArquivo = "/src/main/resources/arquivo/mensagem.txt";
 
         try {
             // Crie um objeto File com o caminho do arquivo
