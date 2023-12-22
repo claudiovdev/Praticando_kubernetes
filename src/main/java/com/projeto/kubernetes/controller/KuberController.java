@@ -7,13 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
-import java.util.Scanner;
 
 @RestController
 @RequestMapping("kubernet")
@@ -41,17 +38,33 @@ public class KuberController {
 
     @GetMapping("/ler")
     public ResponseEntity<String> lerArquivo() {
-        try {
-            // Carrega o arquivo usando o ResourceLoader
-            Resource resource = resourceLoader.getResource("classpath:arquivo/mensagem.txt");
-            InputStream inputStream = resource.getInputStream();
-            Scanner scanner = new Scanner(inputStream, StandardCharsets.UTF_8).useDelimiter("\\A");
+        String caminhoDoArquivo = "/home/app/src/main/resources/arquivo/mensagem.txt";
 
-            // Lê o conteúdo do arquivo
-            String conteudo = scanner.hasNext() ? scanner.next() : "";
+        try {
+            // Crie um objeto File com o caminho do arquivo
+            File arquivo = new File(caminhoDoArquivo);
+
+            // Use FileReader para ler caracteres do arquivo
+            FileReader leitorArquivo = new FileReader(arquivo);
+
+            // Ou use BufferedReader para leitura eficiente de linhas
+            BufferedReader leitorBuffer = new BufferedReader(leitorArquivo);
+
+            StringBuilder conteudo = new StringBuilder();
+            String linha;
+
+            // Leia e acumule cada linha do arquivo
+            while ((linha = leitorBuffer.readLine()) != null) {
+                conteudo.append(linha).append("\n");
+            }
+
+            // Feche os recursos após a leitura
+            leitorBuffer.close();
+            leitorArquivo.close();
 
             // Retorna o conteúdo como resposta
-            return ResponseEntity.ok(conteudo);
+            return ResponseEntity.ok(conteudo.toString());
+
         } catch (IOException e) {
             e.printStackTrace();
             return ResponseEntity.status(500).body("Erro ao ler o arquivo.");
