@@ -41,7 +41,7 @@ spec:
             httpGet:
               path: /actuator/health
               port: 8080
-            periodSeconds: 15
+            periodSeconds: 5
             failureThreshold: 1
             timeoutSeconds: 1
             successThreshold: 1
