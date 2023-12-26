@@ -25,28 +25,26 @@ spec:
           # porquê houve um grave problema na aplicação
           startupProbe:
             httpGet:
-              path: /healthz
+              path: /actuator/health
               port: 8080
             periodSeconds: 3
             failureThreshold: 30
 
           readinessProbe:
             httpGet:
-              path: /healthz
+              path: /actuator/health
               port: 8080
             periodSeconds: 3
             failureThreshold: 1
 
           livenessProbe:
             httpGet:
-              path: /healthz
+              path: /actuator/health
               port: 8080
             periodSeconds: 5
             failureThreshold: 1
             timeoutSeconds: 1
             successThreshold: 1
-
-
 
 
           envFrom:
