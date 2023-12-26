@@ -30,7 +30,7 @@ spec:
             periodSeconds: 3
             failureThreshold: 30
 
-          readinessProble:
+          readinessProbe:
             httpGet:
               path: /healthz
               port: 8080
