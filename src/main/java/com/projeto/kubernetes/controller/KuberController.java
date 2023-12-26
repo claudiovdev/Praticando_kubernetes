@@ -1,8 +1,11 @@
 package com.projeto.kubernetes.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.net.InetAddress;
@@ -16,7 +19,11 @@ import java.io.IOException;
 @RequestMapping("kubernet")
 public class KuberController {
 
+
     private final ResourceLoader resourceLoader;
+
+    @Autowired
+    private ConfigurableApplicationContext context;
 
     public KuberController(ResourceLoader resourceLoader) {
         this.resourceLoader = resourceLoader;
@@ -63,6 +70,11 @@ public class KuberController {
             e.printStackTrace();
             return ResponseEntity.status(500).body("Erro ao ler o arquivo.");
         }
+    }
+
+    @PostMapping("/actuator/shutdown")
+    public void matarMaquina(){
+        context.close();;
     }
 
 
