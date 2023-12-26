@@ -1,20 +1,7 @@
-# Configurações do DataSource H2
-spring:
-  datasource:
-    url: jdbc:h2:mem:testdb
-    driverClassName: org.h2.Driver
-    username: ${USERNAME}
-    password: ${PASSWORD}
-  h2:
-    console:
-      enabled: true
 
-# Configurações do Spring Boot Actuator
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info,customShutdown
-
-
-
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=${USERNAME}
+spring.datasource.password=${PASSWORD}
+spring.h2.console.enabled=true
+management.endpoints.web.exposure.include=health,info,customShutdown
