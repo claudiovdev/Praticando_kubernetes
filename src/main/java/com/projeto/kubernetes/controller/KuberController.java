@@ -16,7 +16,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("kubernet")
+@RequestMapping("kubernetes")
 public class KuberController {
 
 
@@ -72,7 +72,7 @@ public class KuberController {
         }
     }
 
-    @PostMapping("/actuator/shutdown")
+    @PostMapping("/matar-servico")
     public void matarMaquina(){
         context.close();;
     }
