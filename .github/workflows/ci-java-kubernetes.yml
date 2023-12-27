@@ -11,10 +11,14 @@ name: CI Api Java kubernetes
 on:
   push:
     branches:
-      - main
+      - homolog
+      - producao
+      - desenvolvimento
   pull_request:
     branches:
-      - main
+      - homolog
+      - producao
+      - desenvolvimento
 jobs:
   check-application:
     runs-on: 'ubuntu-latest'
