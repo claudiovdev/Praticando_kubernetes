@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: javaserver
-          image: "viniciuscfn/praticando_kubernete:desenvolvimento"
+          image: "viniciuscfn/praticando_kubernete:homolog"
 
           # Configurando o startupProbe para verificar
           # se minha aplicação vai subir em até 1 minuto
