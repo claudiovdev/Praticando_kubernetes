@@ -55,7 +55,7 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: viniciuscfn/praticando_kubernete:latest
+        tags: viniciuscfn/praticando_kubernete:${{github.ref_name}}
       
       
 
