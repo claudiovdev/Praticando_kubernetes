@@ -22,10 +22,10 @@ spec:
           resources:
             requests:
               cpu: "0.05"
-              memory: "20Mi"
+              memory: 20Mi
             limits:
               cpu: "0.05"
-              memory: "25Mi"
+              memory: 25Mi
 
           # Configurando o startupProbe para verificar
           # se minha aplicação vai subir em até 1 minuto
