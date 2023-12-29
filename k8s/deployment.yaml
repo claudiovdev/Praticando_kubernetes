@@ -19,6 +19,14 @@ spec:
         - name: javaserver
           image: "viniciuscfn/praticando_kubernete:producao"
 
+          resources:
+            requests:
+              cpu: "0.05"
+              memory: "20Mi"
+            limits:
+              cpu: "0.05"
+              memory: "25Mi"
+
           # Configurando o startupProbe para verificar
           # se minha aplicação vai subir em até 1 minuto
           # e meio se por acaso ela não subir é
