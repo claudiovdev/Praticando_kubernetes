@@ -1,0 +1,12 @@
+apiVersion: autoscaling/v1
+kinkd: HorizontalPodAutoscaler
+metadata:
+  name: javaserver-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    name: javaserver
+    kind: Deployment
+  minReplicas: 1
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 30
