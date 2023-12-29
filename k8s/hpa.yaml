@@ -1,5 +1,5 @@
 apiVersion: autoscaling/v1
-kinkd: HorizontalPodAutoscaler
+kind: HorizontalPodAutoscaler
 metadata:
   name: javaserver-hpa
 spec:
