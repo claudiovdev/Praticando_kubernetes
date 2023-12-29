@@ -21,10 +21,10 @@ spec:
 
           resources:
             requests:
-              cpu: "0.05"
+              cpu: "0.3"
               memory: 20Mi
             limits:
-              cpu: "0.05"
+              cpu: "0.3"
               memory: 25Mi
 
           # Configurando o startupProbe para verificar
