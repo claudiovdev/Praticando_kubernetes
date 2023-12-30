@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: StatefuSet
+metadata:
+  name: mysql
+  labels:
+    app: mysql
+spec:
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+        - name: mysql
+          image: mysql
+      replicas: 5
+      selector:
+        matchLabels:
+          app: mysql
