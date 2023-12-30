@@ -65,7 +65,6 @@ spec:
               name: config
 
       volumes:
-        -
         - name: config
           configMap:
             name: configmap-arquivos
