@@ -20,14 +20,6 @@ spec:
           image: "viniciuscfn/praticando_kubernete:producao"
 
 
-          resources:
-            requests:
-              cpu: "0.5"
-              memory: 200Mi
-            limits:
-              cpu: "0.5"
-              memory: 250Mi
-
           # Configurando o startupProbe para verificar
           # se minha aplicação vai subir em até 1 minuto
           # e meio se por acaso ela não subir é
@@ -63,13 +55,6 @@ spec:
           volumeMounts:
             - mountPath: "src/main/resources/arquivo/"
               name: config
-            - mountPath: "src/main/resources/pvc"
-              name: javaserver-volume
-
-      volumes:
-        - name: javaserver-volume
-          persistentVolumeClaim:
-            claimName: javaserver-pvc
 
         - name: config
           configMap:
