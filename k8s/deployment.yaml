@@ -63,7 +63,7 @@ spec:
           volumeMounts:
             - mountPath: "src/main/resources/arquivo/"
               name: config
-            - mountPath: "./pvc"
+            - mountPath: "src/main/resources/pvc"
               name: javaserver-volume
 
       volumes:
