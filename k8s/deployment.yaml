@@ -63,8 +63,14 @@ spec:
           volumeMounts:
             - mountPath: "src/main/resources/arquivo/"
               name: config
+            - mountPath: "./pvc"
+              name: javaserver-volume
 
       volumes:
+        - name: javaserver-volume
+          persistentVolumeClaim:
+            claimName: javaserver-pvc
+
         - name: config
           configMap:
             name: configmap-arquivos
