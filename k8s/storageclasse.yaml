@@ -3,6 +3,6 @@ kind: StorageClass
 metadata:
   name: standard
 provisioner: storage-exemplo/storage-exemplo
-reclaimPolicy: Retain
+reclaimPolicy: Delete
 volumeBindingMode: WaitForFirstConsumer
 allowVolumeExpansion: true
