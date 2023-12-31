@@ -1,10 +1,13 @@
 apiVersion: apps/v1
-kind: StatefuSet
+kind: StatefulSet
 metadata:
   name: mysql
-  labels:
-    app: mysql
 spec:
+  serviceName: mysql-h
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mysql
   template:
     metadata:
       labels:
@@ -13,7 +16,6 @@ spec:
       containers:
         - name: mysql
           image: mysql
-      replicas: 5
-      selector:
-        matchLabels:
-          app: mysql
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: root
