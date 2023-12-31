@@ -19,7 +19,6 @@ spec:
         - name: javaserver
           image: "viniciuscfn/praticando_kubernete:producao"
 
-
           # Configurando o startupProbe para verificar
           # se minha aplicação vai subir em até 1 minuto
           # e meio se por acaso ela não subir é
@@ -56,6 +55,7 @@ spec:
             - mountPath: "src/main/resources/arquivo/"
               name: config
 
+      volumes:
         - name: config
           configMap:
             name: configmap-arquivos
