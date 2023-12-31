@@ -5,7 +5,7 @@ metadata:
 spec:
   selector:
     app: javaserver                                    #Aqui no app eu defino qual o nome dos pods que o meu server vai gerencia
-  type: LoadBalancer
+  type: ClusterIP
   ports:
   - name: service-port
     port: 80
