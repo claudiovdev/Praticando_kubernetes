@@ -25,7 +25,7 @@ spec:
 
   volumeClaimTemplates:
     - metadata:
-        name: mysql-volume
+        name: javaserver-pvc
       spec:
         accessModes:
           - readWriteOnce
