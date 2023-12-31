@@ -9,7 +9,7 @@ spec:
   ports:
   - name: service-port2
     port: 8080
-    targetPort: 8090
+    targetPort: 8080
     protocol: TCP
   - name: service-port
     port: 80
