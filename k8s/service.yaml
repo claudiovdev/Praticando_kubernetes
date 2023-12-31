@@ -7,6 +7,10 @@ spec:
     app: javaserver                                    #Aqui no app eu defino qual o nome dos pods que o meu server vai gerencia
   type: LoadBalancer
   ports:
+  - name: service-port2
+    port: 8080
+    targetPort: 8090
+    protocol: TCP
   - name: service-port
     port: 80
     targetPort: 8080                                  # O targetPort representa a porta do meu container
