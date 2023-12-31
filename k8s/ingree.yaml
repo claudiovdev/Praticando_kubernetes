@@ -3,18 +3,14 @@ kind: Ingress
 metadata:
   name: ingress-host
   annotations:
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    nginx.ingress.kubernetes.io/use-regex: "true"
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    kubernetes.io/ingress.class: "nginx"
 spec:
-  ingressClassName: nginx
   rules:
     - http:
         paths:
-          - path: /api
-            pathType: Prefix
+          - pathType: Prefix
+            path: "/"
             backend:
-              service:
-                name: javaserver
-                port:
-                  number: 80
+              serviceName: javaserver
+              servicePort: 8080
+
