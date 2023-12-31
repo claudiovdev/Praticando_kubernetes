@@ -5,6 +5,7 @@ metadata:
   labels:
     app: mysql
 spec:
+  serviceName: mysql-h
   template:
     metadata:
       labels:
@@ -13,7 +14,7 @@ spec:
       containers:
         - name: mysql
           image: mysql
-      replicas: 5
+      replicas: 3
       selector:
         matchLabels:
           app: mysql
