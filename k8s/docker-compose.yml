@@ -1,26 +1,20 @@
-version: '3'
+version: '3.4'
 
 services:
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.9
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.10
     container_name: elk_es01
     restart: on-failure
     volumes:
-      - es01:/usr/share/elasticsearch/data
+      - .docker/es01:/usr/share/elasticsearch/data
     environment:
       - "discovery.type=single-node"
-      - "bootstrap.memory_lock=true"
-      - "cluster.name=codeflix"
-      - "node.name=es01"
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ports:
       - '9200:9200'
       - '9300:9300'
-    networks:
-      - elastic
-
+  
   kibana:
-    image: docker.elastic.co/kibana/kibana:7.17.9
+    image: docker.elastic.co/kibana/kibana:7.17.10
     container_name: elk_kibana
     restart: on-failure
     ports:
@@ -29,27 +23,19 @@ services:
       - ELASTICSEARCH_URL=http://elasticsearch:9200
     depends_on:
       - elasticsearch
-    networks:
-      - elastic
 
   logstash:
-    image: docker.elastic.co/logstash/logstash:7.17.9
+    image: docker.elastic.co/logstash/logstash:7.17.10
     container_name: elk_logstash
     restart: on-failure
     volumes:
-      - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
+      - .docker/logstash/pipeline:/usr/share/logstash/pipeline:ro
     ports:
       - "25826:25826"
       - "5044:5044"
     environment:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"
-    networks:
-      - elastic
 
 networks:
-  elastic:
-    external: true
-
-volumes:
-  es01:
-    external: true
+  default:
+    name: service_catalog
